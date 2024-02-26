@@ -1,0 +1,9 @@
+--- 
+- name: install tree
+  hosts: all
+  become: true
+  tasks:
+    ansible.builtin.apt module:
+    name: installing tree on ubuntu
+    state: present 
+    update_cache: true
