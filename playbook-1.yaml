@@ -6,5 +6,5 @@
     - name: installing tree on ubuntu 
       ansible.builtin.apt:
         name: tree
-        state: present 
         update_cache: yes
+        state: present 
