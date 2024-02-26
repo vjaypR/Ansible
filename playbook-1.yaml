@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - ansible.builtin.apt module:
-      name: installing tree on ubuntu
-      update_cache: yes
+    - name: installing tree on ubuntu 
+      ansible.builtin.apt module:
       state: present 
+      update_cache: yes
