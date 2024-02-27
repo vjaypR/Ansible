@@ -6,5 +6,6 @@
       ansible.builtin.apt:
         name: nginx
         update_cache: true
-        state: present 
+        state: absent 
+        
         
