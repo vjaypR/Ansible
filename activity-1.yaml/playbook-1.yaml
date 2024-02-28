@@ -2,10 +2,25 @@
   become: yes
   hosts: all
   tasks:
-    - name: installing nginx on ubuntu
+    - name: installing apache2 on ubuntu
       ansible.builtin.apt:
-        name: nginx
+        name: apache2
         update_cache: true
-        state: absent 
+        state: present 
+    - name : enable and start apache2
+      ansible.builtin.systemd:
+        name: apache2
+        enabled: true
+        state: started
+    - name: intsalling httpd on centos
+      ansible.builtin.dnf:
+        name: httpd
+        update_cache: true
+        state: present 
+    - name : enable and start httpd
+      ansible.builtin.systemd:
+        name: httpd
+        enabled: true
+        state: started
         
         
