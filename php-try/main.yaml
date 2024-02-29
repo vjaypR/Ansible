@@ -1,6 +1,8 @@
 - name: installing php
   hosts: all
   become: yes
+  vars:
+    package: apache2
   tasks:
     - name: fail on when comes to other os
       ansible.builtin.fail:
