@@ -1,30 +1,23 @@
-- name: apache
+- name: nginx
   become: yes
   hosts: all
   tasks:
     - name: installing apache2 on ubuntu
       ansible.builtin.apt:
-        name: apache2
+        name: "{{package_name}}"
         update_cache: true
         state: present 
       when: ansible_facts['os_family'] == "Debian"
-    - name : enable and start apache2
-      ansible.builtin.systemd:
-        name: apache2
-        enabled: true
-        state: started
-      when: ansible_facts['os_family'] == "Debian"
     - name: intsalling httpd on centos
       ansible.builtin.dnf:
-        name: httpd
+        name: "{{package_name}}"
         update_cache: true
         state: present 
       when: ansible_facts['os_family'] == "RedHat"
     - name : enable and start httpd
       ansible.builtin.systemd:
-        name: httpd
+        name: "{{package_name}}"
         enabled: true
         state: started
-      when: ansible_facts['os_family'] == "RedHat"
-        
+      
         

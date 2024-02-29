@@ -1,2 +1,6 @@
- 172.31.26.63
- 
+ [ubuntu]
+ 172.31.26.63 [package_name = apache2]
+
+
+[redhat]
+            [package_name = apache2]
