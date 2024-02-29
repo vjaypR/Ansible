@@ -10,28 +10,33 @@
       ansible.builtin.apt:
         name: "{{ packages }}"
         update_cache: yes
-        state: present 
-    - name: enable and start apache2
-      ansible.builtin.service:
-        name: "{{ packages }}"
-        enabled: yes
-        state: started
+        state: present
+      notify: enable and start apache2
     - name: intsall php packages 
       ansible.builtin.apt:
         name: "{{ php_packages }}"
         update_cache: yes
         state: present 
+      notify: restart apache
     - name: restart apache 
       ansible.builtin.service:
         name: "{{ packages }}"
         state: restarted
+      notify: restart apache
     - name: copy php.info
       ansible.builtin.copy:
         src: info.php
         dest: /var/www/html/info.php
+      notify: restart apache
+  handlers:
     - name: restart apache 
       ansible.builtin.service:
         name: "{{ packages }}"
         state: restarted
+    - name: enable and start apache2
+      ansible.builtin.service:
+        name: "{{ packages }}"
+        enabled: yes
+        state: started
 
     
