@@ -8,12 +8,12 @@
       when: ansible_facts['distribution'] != 'Ubuntu'
     - name: installing apache2
       ansible.builtin.apt:
-        name: "{{ package }}"
+        name: "{{ packages }}"
         update_cache: yes
         state: present 
     - name: enable and start apache2
       ansible.builtin.service:
-        name: "{{ package }}"
+        name: "{{ packages }}"
         state: started
     - name: intsall php packages 
       ansible.builtin.apt:
@@ -22,7 +22,7 @@
         state: present 
     - name: restart apache 
       ansible.builtin.service:
-        name: "{{ package }}"
+        name: "{{ packages }}"
         state: restarted
     - name: copy php.info
       ansible.builtin.copy:
@@ -30,7 +30,7 @@
         dest: /var/www/html/info.php
     - name: restart apache 
       ansible.builtin.service:
-        name: "{{ package }}"
+        name: "{{ packages }}"
         state: restarted
 
     
