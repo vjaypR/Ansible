@@ -1,0 +1,31 @@
+- name: installing tomcat
+  hosts: appserver
+  become: yes
+  tasks:
+    - name: fail for unsupported operating systems
+      ansible.builtin.fail:
+        msg: " This playbook is designed only for the Ubuntu os"
+      when: ansible_facts['distribution'] != 'Ubuntu'
+    - name: installing openjdk-11
+      ansible.builtin.apt:
+        name: "{{ java_package_name }}"
+        update_cache: yes
+        state: present 
+    - name: creating group
+      ansible.builtin.group module:
+        name: "{{group_name}}"
+        state: present 
+    - name: creating user
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        create_home: yes
+        group: "{{ group_name}}"
+        user: "{{ user_name }}"
+        shell: "{{ user_shell }}"
+        home: "{{ home_dir }}"
+        system: true
+        state: present
+    - name: downloading tomcat
+      ansible.builtin.get_url:
+        url: "{{ tomcat_url }}"
+        dest: /tmp/apache-tomcat-10.0.10.tar.gz
