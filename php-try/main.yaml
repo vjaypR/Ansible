@@ -1,45 +1,37 @@
----
-- name: Install Apache2 and PHP
-  hosts: appserver
+- name: installing php
+  hosts: webserver
   become: yes
-
-  vars:
-    packages: apache2
-    php_packages:
-      - php
-      - libapache2-mod-php
-      - php-mysql
-
   tasks:
-    - name: Fail when not Ubuntu
+    - name: fail on when comes to other os
       ansible.builtin.fail:
-        msg: "This playbook is designed only for Ubuntu"
+        msg: "This playbook is designed only for Ubuntu os"
       when: ansible_facts['distribution'] != 'Ubuntu'
-
-    - name: Install Apache2
+    - name: installing apache2
       ansible.builtin.apt:
         name: "{{ packages }}"
         update_cache: yes
-        state: present
-
-    - name: Enable and start Apache2
+        state: present 
+    - name: enable and start apache2
       ansible.builtin.service:
-        name: apache2
+        name: "{{ packages }}"
         enabled: yes
         state: started
-
-    - name: Install PHP packages
+    - name: intsall php packages 
       ansible.builtin.apt:
         name: "{{ php_packages }}"
         update_cache: yes
-        state: present
-
-    - name: Restart Apache2
+        state: present 
+    - name: restart apache 
       ansible.builtin.service:
-        name: apache2
+        name: "{{ packages }}"
         state: restarted
-
-    - name: Copy info.php
+    - name: copy php.info
       ansible.builtin.copy:
         src: info.php
         dest: /var/www/html/info.php
+    - name: restart apache 
+      ansible.builtin.service:
+        name: "{{ packages }}"
+        state: restarted
+
+    
