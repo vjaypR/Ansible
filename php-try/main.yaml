@@ -5,7 +5,7 @@
     - name: fail on when comes to other os
       ansible.builtin.fail:
         msg: "build this playbook only on os family"
-      when: ansible_facts['distribution'] != "Debian"
+      when: ansible_facts['distribution'] != 'Debian'
     - name: installing apache2
       ansible.builtin.apt:
         name: "{{package}}"
