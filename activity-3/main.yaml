@@ -10,11 +10,15 @@
       ansible.builtin.apt:
         name: "{{ java_package_name }}"
         update_cache: yes
-        state: present 
+        state: present
+    - ansible.builtin.debug: 
+        msg: "installed java with the help of {{ java_package_name}}"
     - name: creating group
       ansible.builtin.group:
         name: "{{group_name}}"
         state: present 
+    - ansible.builtin.debug:
+        msg: " user has been created with {{user_name}}"
     - name: creating user
       ansible.builtin.user:
         name: "{{ user_name }}"
@@ -25,7 +29,17 @@
         home: "{{ home_dir }}"
         system: true
         state: present
+    - ansible.builtin.debug:
+        msg: " user is created with {{user_name}}"
     - name: downloading tomcat
       ansible.builtin.get_url:
         url: "{{ tomcat_url }}"
         dest: /tmp/apache-tomcat-10.0.10.tar.gz
+    - ansible.builtin.debug:
+        msg: " tomcat downloaded using url {{tomcat_url}}"
+    - name: tar downloading
+      ansible.builtin.unarchive:
+        src: "{{ tomcat_url}}"
+        dest: /tmp/apache-tomcat-10.0.10.tar.gz
+    - ansible.builtin.debug:
+        msg: " tar is xtracted to destination /tmp/apache-tomcat-10.0.10.tar.gz "
