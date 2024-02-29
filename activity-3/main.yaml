@@ -12,7 +12,7 @@
         update_cache: yes
         state: present 
     - name: creating group
-      ansible.builtin.group module:
+      ansible.builtin.group:
         name: "{{group_name}}"
         state: present 
     - name: creating user
