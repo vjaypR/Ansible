@@ -1,4 +1,6 @@
-[package:vars]
-packages=apache2
-[php_packages:vars]
-packages=php libapache2-mod-php php-mysql
+---
+packages: apache2
+php_packages:
+  - php 
+  - libapache2-mod-php 
+  - php-mysql

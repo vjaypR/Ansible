@@ -1,12 +1,6 @@
 - name: installing php
-  hosts: all
+  hosts: appserver
   become: yes
-  vars:
-    package: apache2
-    php_packages: 
-      - packages=php 
-      - libapache2-mod-php 
-      - php-mysql
   tasks:
     - name: fail on when comes to other os
       ansible.builtin.fail:
