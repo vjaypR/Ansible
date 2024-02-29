@@ -40,6 +40,8 @@
     - name: tar downloading
       ansible.builtin.unarchive:
         src: "{{ tomcat_url}}"
-        dest: /tmp/apache-tomcat-10.0.10.tar.gz
+        dest: "{{ home_dir}}"
+        owner: "{{ user }}"
+        remote_src: yes
     - ansible.builtin.debug:
         msg: " tar is xtracted to destination /tmp/apache-tomcat-10.0.10.tar.gz "
