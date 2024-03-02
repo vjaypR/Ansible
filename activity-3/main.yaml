@@ -69,7 +69,7 @@
         dest: "/opt/tomcat/apache-tomcat-10.0.10/conf/tomcat-user.xml"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
-        mode: "0640"
+        mode: "0600"
     - name: adding manager acc
       ansible.builtin.copy:
         src: files/manager.xml
