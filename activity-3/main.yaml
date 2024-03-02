@@ -48,7 +48,7 @@
         dest: "{{ home_dir}}"
         owner: "{{ user_name }}"
         remote_src: yes
-      when: "not if the file tomcat_tar_file.stat.exists"
+      when: "not tomcat_tar_file.stat.exists"
     - ansible.builtin.debug:
         msg: " tar is xtracted to destination /tmp/apache-tomcat-10.0.10.tar.gz "
     - name: finding all the files
