@@ -52,7 +52,7 @@
       register: shell_files
     - name: chane permissions to execute
       file:
-        path: "{{ Item.path}}"
+        path: "{{ item.path}}"
         owner: "{{ user_name}}"
         group: "{{ group_name }}"
         mode: "755"
