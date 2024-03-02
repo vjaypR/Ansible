@@ -89,7 +89,7 @@
         src: files/tomcat.service
         dest: "/etc/systemd/system/tomcat.service"
       notify: 
-        - start tomcat 
+        - start and enable tomcat-user
   handlers:
     - name: start and enable tomcat-user
       ansible.builtin.systemd_service:
