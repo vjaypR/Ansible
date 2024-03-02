@@ -33,7 +33,7 @@
         msg: " user is created with {{user_name}}"
     - ansible.builtin.stat:
         path: /tmp/apache-tomcat-10.0.10.tar.gz
-      register: tomcat_tar
+      register: tomcat_tar_file
     - ansible.builtin.debug:
         msg: " download only if file not exists"
     - name: downloading tomcat
