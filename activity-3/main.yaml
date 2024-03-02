@@ -31,10 +31,16 @@
         state: present
     - ansible.builtin.debug:
         msg: " user is created with {{user_name}}"
+    - ansible.builtin.stat:
+        path: /tmp/apache-tomcat-10.0.10.tar.gz
+      register: tomcat_tar.gz
+    - ansible.builtin.debug:
+        msg: " download only if file not exists"
     - name: downloading tomcat
       ansible.builtin.get_url:
         url: "{{ tomcat_url }}"
         dest: /tmp/apache-tomcat-10.0.10.tar.gz
+      when: not tomcat_tar_file.stat.exists
     - ansible.builtin.debug:
         msg: " tomcat downloaded using url {{tomcat_url}}"
     - name: tar downloading
