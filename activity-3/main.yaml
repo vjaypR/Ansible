@@ -61,5 +61,5 @@
         path: "{{ item.path}}"
         owner: "{{ user_name}}"
         group: "{{ group_name }}"
-        mode: "755"
+        mode: "765"
       loop: "{{ shell_files.files }}"
