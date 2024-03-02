@@ -31,24 +31,24 @@
         state: present
     - ansible.builtin.debug:
         msg: " user is created with {{user_name}}"
+    - name: downloading tomcat
+      ansible.builtin.get_url:
+        url: "{{ tomcat_url }}"
+        dest: /tmp/apache-tomcat-10.0.10.tar.gz
+    - ansible.builtin.debug:
+        msg: " tomcat downloaded using url {{tomcat_url}}"
     - ansible.builtin.stat:
         path: /tmp/apache-tomcat-10.0.10.tar.gz
       register: tomcat_tar_file
     - ansible.builtin.debug:
         msg: " download only if file not exists"
-    - name: downloading tomcat
-      ansible.builtin.get_url:
-        url: "{{ tomcat_url }}"
-        dest: /tmp/apache-tomcat-10.0.10.tar.gz
-      when: not tomcat_tar_file.stat.exists
-    - ansible.builtin.debug:
-        msg: " tomcat downloaded using url {{tomcat_url}}"
     - name: tar downloading
       ansible.builtin.unarchive:
         src: "{{ tomcat_url}}"
         dest: "{{ home_dir}}"
         owner: "{{ user_name }}"
         remote_src: yes
+      when: " skip if the file tomcat_tar_file not exists"
     - ansible.builtin.debug:
         msg: " tar is xtracted to destination /tmp/apache-tomcat-10.0.10.tar.gz "
     - name: finding all the files
