@@ -45,3 +45,15 @@
         remote_src: yes
     - ansible.builtin.debug:
         msg: " tar is xtracted to destination /tmp/apache-tomcat-10.0.10.tar.gz "
+    - name: finding all the files
+      find:
+        paths: /opt/tomcat/apache-tomcat-10.0.10/bin
+        pattern: '*.sh'
+      register: shell_files
+    - name: chane permissions to execute
+      file:
+        path: "{{ Item.path}}"
+        owner: "{{ user_name}}"
+        group: "{{ group_name }}"
+        mode: "755"
+      loop: "{{ shell_files.files }}"
