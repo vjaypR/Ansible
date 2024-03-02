@@ -63,10 +63,10 @@
         group: "{{ group_name }}"
         mode: "755"
       loop: "{{ shell_files.files }}"
-    - name: adding tomcat-user acc
+    - name: adding tomcat-users acc
       ansible.builtin.copy:
         src: files/tomcat-users.xml
-        dest: "/opt/tomcat/apache-tomcat-10.0.10/conf/tomcat-user.xml"
+        dest: "/opt/tomcat/apache-tomcat-10.0.10/conf/tomcat-users.xml"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
         mode: "0600"
