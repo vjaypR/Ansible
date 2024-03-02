@@ -64,36 +64,48 @@
         mode: "755"
       loop: "{{ shell_files.files }}"
     - name: adding tomcat-users acc
-      ansible.builtin.copy:
-        src: files/tomcat-users.xml
+      ansible.builtin.template:
+        src: templates/tomcat-users.xml.j2
         dest: "/opt/tomcat/apache-tomcat-10.0.10/conf/tomcat-users.xml"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
         mode: "0600"
+      notify:
+        - restart tomcat
     - name: adding manager acc
-      ansible.builtin.copy:
-        src: files/manager.xml
+      ansible.builtin.template:
+        src: templates/manager.xml.j2
         dest: "/opt/tomcat/apache-tomcat-10.0.10/webapps/manager/META-INF/context.xml"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
         mode: "0640"
+      notify:
+        - restart tomcat
     - name: adding host-manager acc
-      ansible.builtin.copy:
-        src: files/host-manager.xml
+      ansible.builtin.template:
+        src: templates/host-manager.xml.j2
         dest: "/opt/tomcat/apache-tomcat-10.0.10/webapps/host-manager/META-INF/context.xml"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
         mode: "0640"
+      notify:
+        - restart tomcat
     - name: adding tomcat.service
-      ansible.builtin.copy:
-        src: files/tomcat.service
+      ansible.builtin.template:
+        src: templates/tomcat.service.j2
         dest: "/etc/systemd/system/tomcat.service"
       notify: 
-        - start and enable tomcat-user
+        - start tomcat 
   handlers:
-    - name: start and enable tomcat-user
+    - name: start tomcat
       ansible.builtin.systemd_service:
         name: tomcat
         daemon_reload: yes
         enabled: yes
         state: started
+    - name: restart tomcat
+      ansible.builtin.systemd_service:
+        name: tomcat
+        daemon_reload: yes
+        enabled: yes
+        state: restarted
