@@ -61,7 +61,7 @@
         path: "{{ item.path}}"
         owner: "{{ user_name}}"
         group: "{{ group_name }}"
-        mode: "765"
+        mode: "755"
       loop: "{{ shell_files.files }}"
     - name: adding tomcat-user acc
       ansible.builtin.copy:
