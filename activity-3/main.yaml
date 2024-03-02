@@ -63,3 +63,37 @@
         group: "{{ group_name }}"
         mode: "765"
       loop: "{{ shell_files.files }}"
+    - name: adding tomcat-user acc
+      ansible.builtin.copy:
+        src: files/tomcat-users.xml
+        dest: "/opt/tomcat/apache-tomcat-10.0.10/conf/tomcat-user.xml"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        mode: "0640"
+    - name: adding manager acc
+      ansible.builtin.copy:
+        src: files/manager.xml
+        dest: "/opt/tomcat/apache-tomcat-10.0.10/webapps/manager/META-INF/context.xml"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        mode: "0640"
+    - name: adding host-manager acc
+      ansible.builtin.copy:
+        src: files/host-manager.xml
+        dest: "/opt/tomcat/apache-tomcat-10.0.10/webapps/host-manager/META-INF/context.xml"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        mode: "0640"
+    - name: adding tomcat.service
+      ansible.builtin.copy:
+        src: files/tomcat.service
+        dest: "/etc/systemd/system/tomcat.service"
+      notify: 
+        - start tomcat 
+  handlers:
+    - name: start and enable tomcat-user
+      ansible.builtin.systemd_service:
+        name: tomcat
+        daemon_reload: true
+        enabled: yes
+        state: started
