@@ -59,6 +59,12 @@
         path: "{{ home_dir}}"
         owner: "{{ user }}"
         group: "{{ group }}"
+    - name: adding service 
+      ansible.builtin.template:
+        src: files/nopCommerce.serive
+        dest: "etc/systemd/system/nopCommerce.service "
+        owner: "{{ user }}"
+        group: "{{ group }}"
   handlers:
     - name: start nginx
       ansible.builtin.systemd_service:
