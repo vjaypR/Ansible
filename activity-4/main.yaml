@@ -36,7 +36,7 @@
     - ansible.builtin.debug:
         msg: " nopCommerce is downloaded to the {{ home_dir }}" 
     - name: changing onwership
-      anible.builtin.file:
+      ansible.builtin.file:
         path: "{{ home_dir}}"
         owner: "{{ user_name}}"
         group: "{{ group_name }}"
