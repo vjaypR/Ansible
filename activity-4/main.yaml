@@ -6,6 +6,19 @@
       ansible.builtin.fail:
         msg: " This playbook is designed only for the Ubuntu os"
       when: ansible_facts['distribution'] != 'Ubuntu'
+    - name: registering microsoftkey
+      ansible.builtin.get_url:
+        url: "{{ feed_url }}"
+        dest: "{{ feed_dir }}"
+    - ansible.builtin.debug:
+        msg: " registering key"
+    - name: implementing package
+      ansible.builtin.apt:
+        name: "{{ feed_package }}"
+        update_cache: yes
+        state: present 
+    - ansible.builtin.debug:
+        msg: "completed setting up packages"
     - name: installing nginx
       ansible.builtin.apt:
         name: "{{ package }}"
