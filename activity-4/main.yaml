@@ -35,6 +35,11 @@
         dest: "{{ home_dir}}"  
         remote_src: yes
       when: "not nop_file.stat.exists"
+    - name: chane permissions to execute
+      anible.builtin.file:
+        path: "{{ home_dir}}"
+        owner: "{{ user_name}}"
+        group: "{{ group_name }}"
   handlers:
     - name: start nginx
       ansible.builtin.systemd_service:
