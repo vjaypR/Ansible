@@ -12,12 +12,18 @@
         dest: "{{ feed_dir }}"
     - ansible.builtin.debug:
         msg: " registering key"
+    - ansible.builtin.stat:
+        path: "{{ feed_dir }}"
+      register: package_file
+    - ansible.builtin.debug:
+        msg: "implement only if not exists"
     - name: implementing package
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
     - ansible.builtin.debug:
         msg: "completed setting up packages"
+      when: "not package_file.stat.exists"
     - name: installing nginx
       ansible.builtin.apt:
         name: "{{ package }}"
