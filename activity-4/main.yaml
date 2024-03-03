@@ -26,7 +26,7 @@
       register: nop_file
     - ansible.builtin.debug:
         msg: "download only if not exists"
-      when: "not the nop_file.stat.exists"
+      when: "not nop_file.stat.exists"
     - ansible.builtin.debug:
         msg: " nopCommerce is downloaded to the {{ home_dir }}"      
   handlers:
