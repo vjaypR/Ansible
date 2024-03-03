@@ -21,14 +21,20 @@
         dest: "{{ home_dir }}"
     - ansible.builtin.debug:
         msg: "downloading nopCommerce"
+      
     - ansible.builtin.stat:
         path: "{{ home_dir }}"
       register: nop_file
     - ansible.builtin.debug:
         msg: "download only if not exists"
-      when: "not nop_file.stat.exists"
     - ansible.builtin.debug:
-        msg: " nopCommerce is downloaded to the {{ home_dir }}"      
+        msg: " nopCommerce is downloaded to the {{ home_dir }}" 
+    - name: unzipping nopCommerce
+      ansible.builtin.unarchive:
+        src: "{{ nop_url }}"
+        dest: "{{ home_dir}}"  
+        remote_src: yes
+      when: "not nop_file.stat.exists"
   handlers:
     - name: start nginx
       ansible.builtin.systemd_service:
