@@ -14,7 +14,7 @@
         msg: " registering key"
     - name: implementing package
       ansible.builtin.dpkg_selections:
-        name: "{{ feed_package }}"
+        deb: "{{ feed_package }}"
         selection: install 
     - ansible.builtin.debug:
         msg: "completed setting up packages"
