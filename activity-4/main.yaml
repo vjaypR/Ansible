@@ -13,10 +13,9 @@
     - ansible.builtin.debug:
         msg: " registering key"
     - name: implementing package
-      ansible.builtin.apt:
+      ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
-        update_cache: yes
-        state: present 
+        selection: install 
     - ansible.builtin.debug:
         msg: "completed setting up packages"
     - name: installing nginx
