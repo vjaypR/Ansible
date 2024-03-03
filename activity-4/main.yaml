@@ -61,7 +61,7 @@
         group: "{{ group }}"
     - name: adding service 
       ansible.builtin.file:
-        src: files/nopCommerce.service
+        src: files/nop.service
         dest: "etc/systemd/system/nopCommerce.service"
       notify:
         - start nopCommerce
