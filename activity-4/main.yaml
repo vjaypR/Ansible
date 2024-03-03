@@ -38,7 +38,7 @@
     - name: changing onwership
       ansible.builtin.file:
         path: "{{ home_dir}}"
-        owner: "{{ user}}"
+        owner: "{{ user }}"
         group: "{{ group }}"
   handlers:
     - name: start nginx
