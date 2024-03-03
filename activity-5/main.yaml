@@ -21,9 +21,9 @@
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
+      when: "not package_file.stat.exists"
     - ansible.builtin.debug:
         msg: "completed setting up packages"
-      when: "not package_file.stat.exists"
     - name: installing dotnet 
       ansible.builtin.apt:
         name: "{{ dot_package }}"
