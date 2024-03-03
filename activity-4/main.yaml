@@ -68,6 +68,7 @@
       ansible.builtin.template:
         src: templates/nopCommerce.service
         dest: "etc/systemd/system/nopCommerce.service"
+        remote_src: yes
       notify:
         - start nopCommerce
   handlers:
