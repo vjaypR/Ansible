@@ -13,7 +13,7 @@
     - ansible.builtin.debug:
         msg: " registering key"
     - ansible.builtin.stat:
-        path: packages-microsoft-prod.deb
+        path: /tmp/packages-microsoft-prod.deb
       register: package_file
     - ansible.builtin.debug:
         msg: "implement only if not exists"
