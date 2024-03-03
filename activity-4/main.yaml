@@ -1,0 +1,23 @@
+- name: nopcommerce
+  hosts: appserver
+  become: yes
+  tasks:
+    - name: fail for unsupported operating systems
+      ansible.builtin.fail:
+        msg: " This playbook is designed only for the Ubuntu os"
+      when: ansible_facts['distribution'] != 'Ubuntu'
+    - name: installing nginx
+      ansible.builtin.apt:
+        name: nginx
+        update_cache: yes
+        state: present 
+    - ansible.builtin.debug:
+        msg: "nginx is installed"
+      notify:
+        - start nginx
+  handlers:
+    - name: start nginx
+      ansible.builtin.systemd_service:
+        name: nginx
+        enabled: true
+        state: started  
