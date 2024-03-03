@@ -3,4 +3,4 @@ package: nginx
 nop_url: "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.6/nopCommerce_4.60.6_NoSource_linux_x64.zip"
 home_dir: /var/www/nopCommerce
 group: www-data
-name: www-data
+user: www-data
