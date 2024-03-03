@@ -35,7 +35,7 @@
         dest: "{{ home_dir}}"  
         remote_src: yes
       when: "not nop_file.stat.exists"
-    - name: chane permissions to execute
+    - name: changing onwership
       anible.builtin.file:
         path: "{{ home_dir}}"
         owner: "{{ user_name}}"
