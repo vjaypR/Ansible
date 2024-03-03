@@ -74,7 +74,6 @@
       notify:
         - restart nginx
   handlers:
-    - name: start
     - name: start nginx
       ansible.builtin.systemd_service:
         name: nginx
