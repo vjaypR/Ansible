@@ -14,7 +14,6 @@
         msg: " registering key"
     - name: implementing package
       ansible.builtin.dpkg_selections:
-        deb: /tmp/packages-microsoft-prod.deb
         name: "{{ feed_package }}"
         selection: install 
     - ansible.builtin.debug:
