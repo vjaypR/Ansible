@@ -68,6 +68,7 @@
       ansible.builtin.file:
         src: files/nopCommerce.service
         dest: "/etc/systemd/system/nopCommerce.service"
+        state: file
       notify:
         - start nopCommerce
   handlers:
