@@ -60,11 +60,11 @@
         owner: "{{ user }}"
         group: "{{ group }}"
     - name: adding service 
-      ansible.builtin.template:
+      ansible.builtin.file:
         src: files/nopCommerce.serive
         dest: "etc/systemd/system/nopCommerce.service "
-        owner: "{{ user }}"
-        group: "{{ group }}"
+      notify:
+        - start nopCommerce
   handlers:
     - name: start nginx
       ansible.builtin.systemd_service:
