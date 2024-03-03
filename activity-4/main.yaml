@@ -65,10 +65,9 @@
         owner: "{{ user }}"
         group: "{{ group }}"
     - name: adding service 
-      ansible.builtin.file:
-        src: files/nopCommerce.service
+      ansible.builtin.template:
+        src: templates/nopCommerce.service
         dest: "etc/systemd/system/nopCommerce.service"
-        state: link
       notify:
         - start nopCommerce
   handlers:
