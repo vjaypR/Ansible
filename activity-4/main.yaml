@@ -67,8 +67,7 @@
     - name: adding service 
       ansible.builtin.template:
         src: templates/nopCommerce.service
-        dest: "etc/systemd/system/nopCommerce.service"
-        remote_src: yes
+        dest: "/etc/systemd/system/nopCommerce.service"
       notify:
         - start nopCommerce
   handlers:
