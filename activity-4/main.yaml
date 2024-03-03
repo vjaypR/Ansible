@@ -38,8 +38,8 @@
     - name: changing onwership
       ansible.builtin.file:
         path: "{{ home_dir}}"
-        owner: "{{ user_name}}"
-        group: "{{ group_name }}"
+        owner: "{{ user}}"
+        group: "{{ group }}"
   handlers:
     - name: start nginx
       ansible.builtin.systemd_service:
