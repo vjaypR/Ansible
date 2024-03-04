@@ -12,10 +12,17 @@
         dest: /tmp/get-docker.sh
     - ansible.builtin.debug:
         msg: " docker installed on Ubuntu"
+    - ansible.builtin.stat:
+        path: "{{ home_dir }}"
+      regiister: docker_file
+    - ansible.builtin.apt:
+        msg: " download only if not exists"
     - name: get docker script
       ansible.builtin.shell: "sh /tmp/get-docker.sh"
+      when: "not docker_file.stat.exists"
     - ansible.builtin.debug:
         msg: " got docker script "
+    
 
 
 
