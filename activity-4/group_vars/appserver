@@ -1,6 +1,6 @@
 ---
 docker_url: "http://get.docker.com"
 home_dir: /tmp/get-docker.sh
-grou_name: docker
+group_name: docker
 user_name: docker
 
