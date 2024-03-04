@@ -14,10 +14,11 @@
         msg: " docker installed on Ubuntu"
     - name: get docker script
       ansible.builtin.apt:
-        name: "sh get-docker.sh"
+        name: "{{ package }}"
         update_cache: true
         state: present 
     - ansible.builtin.debug:
         msg: " got docker script "
+
 
 
