@@ -25,8 +25,11 @@
     - name: adding user to docker
       ansible.builtin.user:
         name: "{{ user }}"
-        group: "{{ groups }}"
         create_home: true
+        group: "{{ groups }}"
+        user: "{{ user }}"
+        home: "{{ home_dir }}"
+        system: true 
         state: present 
     - ansible.builtin.debug:
         msg: " added user "
