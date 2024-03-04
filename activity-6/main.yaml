@@ -48,7 +48,7 @@
         state: started  
     - name: restart docker 
       ansible.builtin.systemd_service:
-        name: docker 
+        name: docker
         enabled: true
         daemon_reload: yes
         state: restarted  
