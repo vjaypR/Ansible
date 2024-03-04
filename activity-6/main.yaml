@@ -26,8 +26,8 @@
       ansible.builtin.user:
         name: "{{ user }}"
         create_home: true
-        group: "{{ groups }}"
-        user: "{{ user }}"
+        group: "{{ group_name }}"
+        user: "{{ user_name }}"
         home: "{{ home_dir }}"
         system: true 
         state: present 
