@@ -8,7 +8,7 @@
       when: ansible_facts['distribution'] != "Ubuntu"
     - name : getting docker 
       ansible.builtin.get_url:
-        url: "http://get.docker.com"
+        url: "{{ docker_url }}"
         dest: /tmp/get-docker.sh
     - ansible.builtin.debug:
         msg: " docker installed on Ubuntu"

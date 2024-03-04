@@ -1,4 +1,4 @@
 ---
- docker_url: "http://get.docker.com"
+ docker_url: "http://get.docker.com/get-docker.sh"
  home_dir: /tmp/get-docker.sh
- package: get-docker.sh
+ package: sh get-docker.sh
