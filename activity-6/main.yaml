@@ -14,7 +14,7 @@
         msg: " docker installed on Ubuntu"
     - ansible.builtin.stat:
         path: "{{ home_dir }}"
-      regiister: docker_file
+      register: docker_file
     - ansible.builtin.apt:
         msg: " download only if not exists"
     - name: get docker script
