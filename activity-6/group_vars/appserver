@@ -1,3 +1,4 @@
 ---
  docker_url: "http://get.docker.com"
  home_dir: /tmp/get-docker.sh
+ script: "sh get-docker.sh"
