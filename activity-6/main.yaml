@@ -13,7 +13,7 @@
     - ansible.builtin.debug:
         msg: " docker installed on Ubuntu"
     - name: get docker script
-      ansible.builtin.shell: "sh get-docker.sh"
+      ansible.builtin.shell: "sh /tmp/get-docker.sh"
     - ansible.builtin.debug:
         msg: " got docker script "
 
