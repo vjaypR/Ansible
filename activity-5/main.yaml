@@ -40,6 +40,10 @@
         msg: "downloading nopCommerce"
       notify:
         - restart nopCommerce
+    - name: Ensure directory exists for nopCommerce
+      ansible.builtin.file:
+        path: "{{ home_dir }}"
+        state: directory
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
