@@ -22,6 +22,15 @@
       when: "not docker_file.stat.exists"
     - ansible.builtin.debug:
         msg: " got docker script "
+    - name: adding user to docker
+      ansible.builtin.user:
+        name: "{{ user }}"
+        group: "{{ groups }}"
+        create_home: true
+        state: present 
+    - ansible.builtin.debug:
+        msg: " added user "
+
     
 
 

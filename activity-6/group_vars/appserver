@@ -1,3 +1,5 @@
 ---
- docker_url: "http://get.docker.com"
- home_dir: /tmp/get-docker.sh
+docker_url: "http://get.docker.com"
+home_dir: /tmp/get-docker.sh
+groups: docker
+user: jay
