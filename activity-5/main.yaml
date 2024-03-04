@@ -12,16 +12,10 @@
         dest: "{{ feed_dir }}"
     - ansible.builtin.debug:
         msg: " registering key"
-    - ansible.builtin.stat:
-        path: /tmp/packages-microsoft-prod.deb
-      register: package_file
-    - ansible.builtin.debug:
-        msg: "implement only if not exists"
     - name: implementing package
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
-      when: "not package_file.stat.exists"
     - ansible.builtin.debug:
         msg: "completed setting up packages"
     - name: installing dotnet 
@@ -51,7 +45,6 @@
         src: "{{ nop_url }}"
         dest: "{{ home_dir}}"  
         remote_src: yes
-      when: "not nop_file.stat.exists"
     - ansible.builtin.debug:
         msg: " nopCommerce is downloaded to the {{ home_dir }}" 
       notify:
