@@ -32,6 +32,10 @@
         msg: "nginx is installed"
       notify:
         - start nginx
+    - name: Create directory for nopCommerce
+      ansible.builtin.file:
+        path: "{{ home_dir }}"
+        state: directory
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
