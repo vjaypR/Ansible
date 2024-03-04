@@ -26,19 +26,6 @@
         msg: " got docker script "
       notify:
         - restart docker 
-    - name: adding user to docker
-      ansible.builtin.user:
-        name: "{{ user_name }}"
-        create_home: true
-        group: "{{ group_name }}"
-        user: "{{ user_name }}"
-        home: "{{ home_dir }}"
-        system: true 
-        state: present 
-    - ansible.builtin.debug:
-        msg: " added user "
-      notify:
-        - restart docker 
   handlers:
     - name: start docker 
       ansible.builtin.systemd_service:
@@ -52,9 +39,4 @@
         enabled: true
         daemon_reload: yes
         state: restarted  
-
-
-    
-
-
 
