@@ -12,6 +12,8 @@
         dest: /tmp/get-docker.sh
     - ansible.builtin.debug:
         msg: " docker installed on Ubuntu"
+      notify:
+        - restart docker
     - ansible.builtin.stat:
         path: "{{ home_dir }}"
       register: docker_file
@@ -23,7 +25,7 @@
     - ansible.builtin.debug:
         msg: " got docker script "
       notify:
-        - restart docker engine
+        - restart docker 
     - name: adding user to docker
       ansible.builtin.user:
         name: "{{ user_name }}"
@@ -36,17 +38,19 @@
     - ansible.builtin.debug:
         msg: " added user "
       notify:
-        - restart docker engine
+        - restart docker 
   handlers:
-    - name: start docker engine
+    - name: start docker 
       ansible.builtin.systemd_service:
         name: docker 
         enabled: true
+        daemon_reload: yes
         state: started  
-    - name: restart docker engine
+    - name: restart docker 
       ansible.builtin.systemd_service:
         name: docker 
         enabled: true
+        daemon_reload: yes
         state: restarted  
 
 
