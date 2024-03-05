@@ -71,7 +71,7 @@
         owner: "{{ user }}"
         group: "{{ group }}"
         mode: "755"
-      notify: restart nginx
+      notify: restart nopCommerce
     - name: adding service 
       ansible.builtin.template:
         src: templates/nopCommerce.service.j2
