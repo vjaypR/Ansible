@@ -66,6 +66,7 @@
         path: "{{ home_dir}}"
         owner: "{{ user }}"
         group: "{{ group }}"
+        mode: "755"
       notify: restart nginx
     - name: adding service 
       ansible.builtin.template:
