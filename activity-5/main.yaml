@@ -52,11 +52,14 @@
         update_cache: yes
         state: present 
     - ansible.builtin.debug:
-        msg: "nginx is installed"
+        msg: "unzip is installed"
+    - name: adding dir 
+      ansible.builtin.file:
+        path: "{{ file_dir }}"
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
-        dest: "{{ home_dir }}"
+        dest: "{{ file_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         remote_src: yes
