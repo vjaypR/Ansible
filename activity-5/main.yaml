@@ -12,10 +12,16 @@
         dest: "{{ feed_dir }}"
     - ansible.builtin.debug:
         msg: " registering key"
+    - ansible.builtin.stat:
+        path: /tmp/packages-microsoft-prod.deb
+      register: package_file
+    - ansible.builtin.debug:
+        msg: "implement only if not exists"
     - name: implementing package
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
+      when: "not package_file.stat.exists"
     - ansible.builtin.debug:
         msg: "completed setting up packages"
     - name: installing dotnet 
@@ -32,10 +38,6 @@
         msg: "nginx is installed"
       notify:
         - start nginx
-    - name: Create directory for nopCommerce
-      ansible.builtin.file:
-        path: "{{ home_dir }}"
-        state: directory
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
@@ -44,13 +46,19 @@
         msg: "downloading nopCommerce"
       notify:
         - restart nopCommerce
+    - ansible.builtin.stat:
+        path: "{{ home_dir }}"
+      register: nop_file
+    - ansible.builtin.debug:
+        msg: "download only if not exists"
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
-        src: "{{ home_dir }}"
-        dest: " {{ home_dir }}"
+        src: "{{ nop_url }}"
+        dest: "{{ home_dir}}"  
         remote_src: yes
+      when: "not nop_file.stat.exists"
     - ansible.builtin.debug:
-        msg: " nopCommerce is downloaded " 
+        msg: " nopCommerce is downloaded to the {{ home_dir }}" 
       notify:
         - restart nopCommerce
     - name: changing onwership
