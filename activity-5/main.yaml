@@ -71,7 +71,7 @@
     - name: adding dir 
       ansible.builtin.file:
         path: "{{ file_dir}}/Pipelines.Sockets.Unofficial.dll"
-        state: touch
+        state: file
     - name: changing onwership
       ansible.builtin.file:
         path: "{{ file_dir }}/Pipelines.Sockets.Unofficial.dll"
