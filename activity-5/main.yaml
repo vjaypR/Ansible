@@ -70,7 +70,7 @@
         - restart nopCommerce
     - name: changing onwership
       ansible.builtin.file:
-        path: "{{ file_dir }}"
+        path: "{{ home_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         mode: "0600"
