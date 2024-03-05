@@ -54,7 +54,7 @@
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
-        dest: "{{ home_dir}}"  
+        dest: "{{ home_dir}}
         remote_src: yes
       when: "not nop_file.stat.exists"
     - ansible.builtin.debug:
