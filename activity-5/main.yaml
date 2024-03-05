@@ -73,7 +73,7 @@
         path: "{{ home_dir}}"
         owner: "{{ user }}"
         group: "{{ group }}"
-        mode: "755"
+        mode: "0755"
       notify: restart nopCommerce
     - name: adding service 
       ansible.builtin.template:
