@@ -3,6 +3,7 @@ dot_package:
   - apt-transport-https
   - aspnetcore-runtime-7.0
 package: nginx
+unzip: unzip
 nop_url: "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.6/nopCommerce_4.60.6_NoSource_linux_x64.zip"
 home_dir: /var/www/nop/nopCommerce
 file_dir: /var/www/nopCommerce 

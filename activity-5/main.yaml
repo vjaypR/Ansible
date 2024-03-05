@@ -50,6 +50,13 @@
         msg: "downloading nopCommerce"
       notify:
         - restart nopCommerce
+    - name: installing nginx
+      ansible.builtin.apt:
+        name: "{{ unzip }}"
+        update_cache: yes
+        state: present 
+    - ansible.builtin.debug:
+        msg: "nginx is installed"
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
