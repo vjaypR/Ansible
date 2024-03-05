@@ -68,6 +68,10 @@
         msg: " nopCommerce is downloaded to the {{ home_dir }}" 
       notify:
         - restart nopCommerce
+    - name: adding dir 
+      ansible.builtin.file:
+        path: "{{ file_dir}}/Pipelines.Sockets.Unofficial.dll/nopCommerce_4.60.6_NoSource_linux_x64.zip"
+        state: directory
     - name: changing onwership
       ansible.builtin.file:
         path: "{{ file_dir }}/Pipelines.Sockets.Unofficial.dll"
