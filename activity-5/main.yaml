@@ -55,7 +55,7 @@
         msg: "unzip is installed"
     - name: adding dir 
       ansible.builtin.file:
-        path: "{{ file_dir }}"
+        path: "{{ home_dir }}"
         state: directory
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
