@@ -42,10 +42,6 @@
       ansible.builtin.file:
         path: "{{ home_dir }}"
         state: directory
-    - name: creating dir 
-      ansible.builtin.file:
-        path: "{{ unarchive_dir }}"
-        state: directory
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
@@ -64,7 +60,7 @@
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
-        dest: "{{ unarchive_dir }}"
+        dest: "{{ home_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         remote_src: yes
@@ -77,7 +73,7 @@
         path: "{{ home_dir}}"
         owner: "{{ user }}"
         group: "{{ group }}"
-        mode: "0755"
+        mode: "0600"
       notify: restart nopCommerce
     - name: adding service 
       ansible.builtin.template:
