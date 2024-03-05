@@ -56,7 +56,7 @@
     - name: adding dir 
       ansible.builtin.file:
         path: "{{ file_dir }}"
-        state: present
+        state: directory
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
