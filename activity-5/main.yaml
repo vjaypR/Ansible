@@ -60,7 +60,7 @@
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
-        dest: "{{ file_dir }}"
+        dest: "{{ home_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         remote_src: yes
@@ -70,7 +70,7 @@
         - restart nopCommerce
     - name: changing onwership
       ansible.builtin.file:
-        path: "{{ home_dir }}"
+        path: "{{ file_dir: }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         mode: "0600"
