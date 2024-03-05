@@ -61,6 +61,8 @@
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
         dest: "{{ home_dir}}"
+        owner: "{{ user }}"
+        group: "{{ group}}"
         remote_src: yes
     - ansible.builtin.debug:
         msg: " nopCommerce is downloaded to the {{ home_dir }}" 
