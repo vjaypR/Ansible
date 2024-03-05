@@ -42,6 +42,10 @@
       ansible.builtin.file:
         path: "{{ home_dir }}"
         state: directory
+    - name: creating dir 
+      ansible.builtin.file:
+        path: "{{ unarchive_dir }}"
+        state: directory
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
@@ -60,7 +64,7 @@
     - name: unzipping nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
-        dest: "{{ home_dir}}"
+        dest: "{{ unarchive_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
         remote_src: yes
