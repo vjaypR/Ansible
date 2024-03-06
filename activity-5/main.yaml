@@ -17,10 +17,16 @@
       register: package_file
     - ansible.builtin.debug:
         msg: "implement only if not exists"
+    - ansible.builtin.stat:
+        path: /tmp/packages-microsoft-prod.deb
+      register: package_file
+    - ansible.builtin.debug:
+        msg: "implement only if not exists"
     - name: implementing package
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
+      when: "not package_file.stat.exists"
     - ansible.builtin.debug:
         msg: "completed setting up packages"
     - name: installing dotnet 
@@ -28,6 +34,11 @@
         name: "{{ dot_package }}"
         update_cache: yes
         state: present 
+    - name: installing mysql
+      ansible.builtin.apt:
+        name: "{{ db_package }}"
+        update_cache: true
+        state: present
     - name: installing nginx
       ansible.builtin.apt:
         name: "{{ package }}"
