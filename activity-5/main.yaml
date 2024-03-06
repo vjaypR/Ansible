@@ -75,6 +75,7 @@
         group: "{{ group }}"
         recurse: true
         mode: "0755"
+        state: directory
       notify: restart nopCommerce
     - name: adding service 
       ansible.builtin.template:
