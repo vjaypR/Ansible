@@ -90,16 +90,6 @@
       notify:
         - restart nopCommerce
   handlers:
-    - name: start nginx
-      ansible.builtin.systemd_service:
-        name: nginx
-        enabled: true
-        state: started  
-    - name: restart nginx
-      ansible.builtin.systemd_service:
-        name: nginx
-        enabled: true
-        state: restarted  
     - name: restart nopCommerce
       ansible.builtin.systemd:
         name: nopCommerce
