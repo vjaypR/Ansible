@@ -73,7 +73,7 @@
         path: "{{ file_dir }}"
         owner: "{{ user }}"
         group: "{{ group }}"
-        recurse: yes
+        recurse: directory
         mode: "0755"
       notify: restart nopCommerce
     - name: adding service 
