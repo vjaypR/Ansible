@@ -21,7 +21,6 @@
       ansible.builtin.dpkg_selections:
         name: "{{ feed_package }}"
         selection: install 
-      when: "not package_file.stat.exists"
     - ansible.builtin.debug:
         msg: "completed setting up packages"
     - name: installing dotnet 
@@ -46,7 +45,7 @@
         msg: "downloading nopCommerce"
       notify:
         - restart nopCommerce
-    - name: installing nginx
+    - name: unzipping the nop 
       ansible.builtin.apt:
         name: "{{ unzip }}"
         update_cache: yes
