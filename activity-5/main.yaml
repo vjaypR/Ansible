@@ -34,11 +34,6 @@
         name: "{{ dot_package }}"
         update_cache: yes
         state: present 
-    - name: installing mysql
-      ansible.builtin.apt:
-        name: "{{ db_package }}"
-        update_cache: true
-        state: present
     - name: installing nginx
       ansible.builtin.apt:
         name: "{{ package }}"
