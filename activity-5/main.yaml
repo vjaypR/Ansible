@@ -117,5 +117,12 @@
         name: nginx
         enabled: true
         state: restarted  
+    - name: start mysql
+      ansible.builtin.systemd_service:
+        name: mysql
+        enabled: true
+        daemon_reload: true
+        state: restarted
+
 
    
