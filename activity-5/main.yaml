@@ -50,6 +50,8 @@
         state: present 
     - ansible.builtin.debug:
         msg: "database is installed"
+      notify:
+        - restart mysql
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
