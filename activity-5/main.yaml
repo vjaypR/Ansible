@@ -43,15 +43,9 @@
         msg: "nginx is installed"
       notify:
         - start nginx
-    - name: installing database
-      ansible.builtin.apt:
-        name: "{{ package }}"
-        update_cache: yes
-        state: present 
-    - ansible.builtin.debug:
-        msg: "database is installed"
-      notify:
-        - restart mysql
+    - name: installing mysql role 
+      include_role:
+        name: geerlingguy.mysql
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
