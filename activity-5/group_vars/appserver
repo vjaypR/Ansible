@@ -18,3 +18,4 @@ mysql_user_password: manaa
 mysql_root_home: /tmp
 mysql_root_username: praman
 mysql_root_password: manaa
+mysql_root_password_update: true
