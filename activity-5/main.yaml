@@ -52,12 +52,6 @@
         msg: "database is installed"
       notify:
         - restart mysql
-    - name: creating mysql user & adding password
-      community.mysql.mysql_user:
-        name: jay
-        password: manaa
-        priv: '*.*:ALL'
-        state: present  
     - name: downloading nopCommerce
       ansible.builtin.get_url:
         url: "{{ nop_url }}"
