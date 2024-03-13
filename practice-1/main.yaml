@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: run on specified os
-      ansible.builtin.fail module:
+      ansible.builtin.fail:
         msg: " fail on unsupported os"
       when: ansible_facts['distribution']!= 'Ubuntu'
     - name: installing java
