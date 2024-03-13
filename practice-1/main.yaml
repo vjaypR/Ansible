@@ -18,6 +18,9 @@
       ansible.builtin.file:
         path: "{{ maven_dir }}"
         state: directory
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: "0755"
     - name: building maven
       ansible.builtin.get_url:
         url: "{{ maven_url }}"
