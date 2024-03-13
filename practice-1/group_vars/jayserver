@@ -1,3 +1,4 @@
 ---
 java: openjdk-17-jdk
-spc_url: "https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar"
+spc_url: "https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/"
+spc_dir: "spring-petclinic-2.4.2.jar"

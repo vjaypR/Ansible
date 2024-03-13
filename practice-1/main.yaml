@@ -14,4 +14,9 @@ tasks:
       state: present 
   - ansible.builtin.debug:
       msg: "installing java"
-      
+  - name: installing petclinic
+    ansible.builtin.get_url:
+      url: "{{ spc_url }}"
+      dest: "{{ spc_dir }}"
+  - ansible.builtin.debug:
+      msg: " installing pet clinic"
