@@ -26,7 +26,7 @@
         msg: "builded maven"
     - name: xtracting the maven
       ansible.builtin.unarchive:
-        src: "{{ maven_url }}"
+        src: "{{ maven_dir }}"
         dest: /opt
         remote_src: yes
     - name: setting path variables
