@@ -1,0 +1,17 @@
+---
+name: spc 
+hosts: all
+become: yes
+tasks:
+  - name: run on specified os
+    ansible.builtin.fail module:
+      msg: " fail on unsupported os"
+    when: ansible_facts['distribution']!= 'Ubuntu'
+  - name: installing java
+    ansible.builtin.apt:
+      name: "{{ java }}"
+      update_cache: yes
+      state: present 
+  - ansible.builtin.debug:
+      msg: "installing java"
+      
