@@ -1,5 +1,5 @@
 ---
--name: spc 
+- name: spc 
   hosts: jayserver
   become: yes
   tasks:
