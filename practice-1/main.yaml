@@ -46,9 +46,10 @@
         - regexp: '^export PATH'
           line: 'export PATH'
     - name: importing spc repo 
-      ansible.builtin.get_url:
-        url: "{{ spc_url }}"
-        dest: /spc
+      ansible.builtin.git:
+        repo: "{{ spc_url }}"
+        dest: /tmp/spring-petclinic
+        clone: yes
     - ansible.builtin.debug:
         msg: " succeeded in importing"
 
