@@ -29,6 +29,19 @@
         src: "{{ maven_url }}"
         dest: "{{ maven_dir }}"
         remote_src: yes
+    - name: setting path variables
+      ansible.builtin.lineinfile:
+        path: ~/.bashrc
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        create: yes
+        loop:
+          - regexp: '^M2_HOME'
+            line: 'M2_HOME="{{ maven_dir }}"'
+          - regexp: '^PATH'
+            line: 'PATH="$M2_HOME/bin:$PATH"'
+          - regexp: '^export PATH'
+            line: 'export PATH'
     
 
     
