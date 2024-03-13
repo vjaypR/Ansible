@@ -35,13 +35,13 @@
         regexp: "{{ item.regexp }}"
         line: "{{ item.line }}"
         create: yes
-        loop:
-          - regexp: '^M2_HOME'
-            line: 'M2_HOME="{{ maven_dir }}"'
-          - regexp: '^PATH'
-            line: 'PATH="$M2_HOME/bin:$PATH"'
-          - regexp: '^export PATH'
-            line: 'export PATH'
+      loop:
+        - regexp: '^M2_HOME'
+          line: 'M2_HOME="{{ maven_dir }}"'
+        - regexp: '^PATH'
+          line: 'PATH="$M2_HOME/bin:$PATH"'
+        - regexp: '^export PATH'
+          line: 'export PATH'
     
 
     
