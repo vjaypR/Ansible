@@ -22,6 +22,11 @@
       ansible.builtin.get_url:
         url: "{{ maven_url }}"
         dest: "{{ home_dir }}"
+    - name: Extract Maven binary distribution
+      unarchive:
+        src: "{{ maven_url }}"
+        dest: "{{ home_dir }}"
+        remote_src: yes
     - ansible.builtin.debug:
         msg: "maven builded"
     - name: installing petclinic
