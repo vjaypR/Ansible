@@ -14,6 +14,10 @@
         state: present 
     - ansible.builtin.debug:
         msg: "installing java"
+    - name: adding directory
+      ansible.builtin.file:
+        path: "{{ maven_dir }}"
+        state: directory
     - name: building maven
       ansible.builtin.get_url:
         url: "{{ maven_url }}"
