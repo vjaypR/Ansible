@@ -49,7 +49,6 @@
     - name: importing spc repo 
       ansible.builtin.get_url:
         url: "{{ spc_url }}"
-        dest: "{{ spc_dir }}"
     - ansible.builtin.debug:
         msg: " succeeded in importing"
 
