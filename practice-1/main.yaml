@@ -53,7 +53,7 @@
     - ansible.builtin.debug:
         msg: " succeeded in importing"
     - name: building Spring PetClinic project
-    - ansible.builtin.command:
+      ansible.builtin.command:
         cmd: "mvn package"
         chdir: "{{ spc_dir }}"
 
