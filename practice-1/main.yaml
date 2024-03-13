@@ -52,6 +52,11 @@
         clone: yes
     - ansible.builtin.debug:
         msg: " succeeded in importing"
+    - name: Build the project using Maven
+      ansible.builtin.command:
+        cmd: mvn package
+        chdir: /tmp/spring-petclinic
+      register: build_result
 
 
 
