@@ -28,14 +28,5 @@
       ansible.builtin.get_url:
         url: "{{ spc_url }}"
         dest: "{{ spc_dir }}"
-      notify:
-        restart spring-petclinic
-    - ansible.builtin.debug:
-        msg: "installing pet clinic"
-  handlers:
-    - name: restart spring-petclinic
-      ansible.builtin.systemd_service:
-        name: spring-petclinic
-        enabled: true
-        daemon_reload: yes
-        state: restarted  
+      
+ 
