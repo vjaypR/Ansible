@@ -26,7 +26,7 @@
         msg: "builded maven"
     - name: xtracting the maven
       ansible.builtin.unarchive:
-        src: "{{ maven_dir }}"
+        src: "{{ maven_url }}"
         dest: /opt
         remote_src: yes
     - name: setting path variables
@@ -52,10 +52,7 @@
         dest: "{{ spc_dir }}"
     - ansible.builtin.debug:
         msg: " succeeded in importing"
-    - name: building Spring PetClinic project
-      ansible.builtin.command:
-        cmd: "mvn package"
-        chdir: "{{ spc_dir }}"
+
 
 
     
