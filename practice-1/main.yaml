@@ -19,4 +19,4 @@
         url: "{{ spc_url }}"
         dest: "{{ spc_dir }}"
     - ansible.builtin.debug:
-      msg: " installing pet clinic"
+        msg: "installing pet clinic"
