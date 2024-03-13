@@ -1,7 +1,6 @@
 ---
 java: openjdk-17-jdk
-maven_url: "https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-tar -xvf apache-maven-3.9.6-bin.tar.gz"
+maven_url: "https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
 home_dir: /opt
 spc_url: "https://github.com/spring-projects/spring-petclinic.git"
 spc_dir: /spring-petclinic
