@@ -27,7 +27,7 @@
     - name: xtracting the maven
       ansible.builtin.unarchive:
         src: "{{ maven_url }}"
-        dest: "{{ maven_dir }}"
+        dest: /opt
         remote_src: yes
     - name: setting path variables
       ansible.builtin.lineinfile:
@@ -37,7 +37,7 @@
         create: yes
       loop:
         - regexp: '^M2_HOME'
-          line: 'M2_HOME="{{ maven_dir }}"'
+          line: 'M2_HOME="opt/apache-maven-3.9.6"'
         - regexp: '^PATH'
           line: 'PATH="$M2_HOME/bin:$PATH"'
         - regexp: '^export PATH'
