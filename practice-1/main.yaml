@@ -42,7 +42,16 @@
           line: 'PATH="$M2_HOME/bin:$PATH"'
         - regexp: '^export PATH'
           line: 'export PATH'
-    
+    - name: creating directory
+      ansible.builtin.file:
+        path: "{{ spc_dir }}"
+        state: directory
+    - name: importing spc repo 
+      ansible.builtin.get_url:
+        url: "{{ spc_url }}"
+        dest: " {{ spc_dir }}"
+    - ansible.builtin.debug:
+        msg: " succeeded in importing"
 
     
        
