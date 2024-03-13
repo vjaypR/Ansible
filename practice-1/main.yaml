@@ -22,9 +22,4 @@
         - restart spring-petclinic
     - ansible.builtin.debug:
         msg: "installing pet clinic"
-  handlers:
-    - name: spring-petclinic
-      ansible.builtin.systemd:
-        name: spring-petclinic
-        state: restarted
-        enabled: yes
+ 
