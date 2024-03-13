@@ -18,8 +18,6 @@
       ansible.builtin.get_url:
         url: "{{ spc_url }}"
         dest: "{{ spc_dir }}"
-      notify:
-        - restart spring-petclinic
     - ansible.builtin.debug:
         msg: "installing pet clinic"
  
