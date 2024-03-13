@@ -17,6 +17,6 @@
     - name: installing petclinic
       ansible.builtin.get_url:
         url: "{{ spc_url }}"
-        dest: "{{ spc_dir }}"
+        dest: "{{ spc_dirr }}"
     - ansible.builtin.debug:
       msg: " installing pet clinic"
