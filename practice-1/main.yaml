@@ -14,6 +14,16 @@
         state: present 
     - ansible.builtin.debug:
         msg: "installing java"
+    - name: adding dir 
+      ansible.builtin.file:
+        path: "{{ home_dir }}"
+        state: directory
+    - name: building maven
+      ansible.builtin.get_url:
+        url: "{{ maven_url }}"
+        dest: "{{ home_dir }}"
+    - ansible.builtin.debug:
+        msg: "maven builded"
     - name: installing petclinic
       ansible.builtin.get_url:
         url: "{{ spc_url }}"
@@ -27,4 +37,5 @@
       ansible.builtin.systemd_service:
         name: spring-petclinic
         enabled: true
+        daemon_reload: yes
         state: restarted  
