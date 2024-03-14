@@ -1,6 +1,6 @@
 ---
 - name: spc 
-  hosts: jayserver
+  hosts: appserver
   become: yes
   tasks:
     - name: run on specified os
