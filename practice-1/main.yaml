@@ -21,10 +21,9 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: "0755"
-    - name: checking for the existence
-      ansible.builtin.stat:
+    - ansible.builtin.stat:
         path: "{{ maven_url }}"
-        register: maven_file
+      register: maven_file
     - name: building maven
       ansible.builtin.get_url:
         url: "{{ maven_url }}"
