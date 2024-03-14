@@ -1,0 +1,19 @@
+[Unit]
+Description=Spring Petclinic Application
+After=syslog.target network.target
+
+[Service]
+User=jay
+Group=jay
+WorkingDirectory={{ spc_dir }}
+Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+Environment=SERVER_PORT=8080
+ExecStartPre=/usr/bin/git clone {{spc_url}} {{ spc_dir }}
+ExecStart=/opt/apache-maven-3.9.6/bin/mvn -Dserver.port=${SERVER_PORT} -f {{ spc_dir }}/pom.xml spring-boot:run
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
