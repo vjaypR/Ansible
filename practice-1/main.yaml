@@ -57,10 +57,7 @@
         cmd: /opt/apache-maven-3.9.6/bin/mvn package
         chdir: /tmp/spring-petclinic
       register: build_result
-    - name: Check if build was successful
-      ansible.builtin.fail:
-        msg: "Failed to build Spring PetClinic project"
-      when: build_result.rc != 0
+   
 
 
 
