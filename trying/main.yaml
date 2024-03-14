@@ -56,7 +56,7 @@
       notify:
         - restart spring-petclinic
   handlers:
-    - name: restart 
+    - name: restart spring-petclinic
       ansible.builtin.systemd:
         name: spring-petclinic
         state: restarted
