@@ -22,7 +22,7 @@
         group: "{{ group }}"
         mode: "0755"
     - name: checking for the existence
-      ansibile.builtin.stat:
+      ansible.builtin.stat:
         path: "{{ maven_url }}"
         register: maven_file
     - name: building maven
