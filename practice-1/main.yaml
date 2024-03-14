@@ -21,10 +21,15 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: "0755"
+    - name: checking for the existence
+      ansibile.builtin.stat:
+        path: "{{ maven_url }}"
+        register: maven_file
     - name: building maven
       ansible.builtin.get_url:
         url: "{{ maven_url }}"
         dest: "{{ maven_dir }}"
+      when: "not maven_file.stat.exists"
     - ansible.builtin.debug:
         msg: "builded maven"
     - name: xtracting the maven
