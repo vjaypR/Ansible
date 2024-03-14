@@ -16,7 +16,7 @@
         msg: "installing java"
     - name: adding directory
       ansible.builtin.file:
-        path: "{{ maven_dir }}"
+        path: "{{ spc_dir }}"
         state: directory
         owner: "{{ owner }}"
         group: "{{ group }}"
@@ -55,6 +55,7 @@
         dest: "/etc/systemd/system/spring-petclinic.service"
       notify:
         - restart spring-petclinic
+      
   handlers:
     - name: restart spring-petclinic
       ansible.builtin.systemd:
